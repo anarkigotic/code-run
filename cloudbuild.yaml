@@ -1,5 +1,5 @@
 steps:
-  # Paso 1: Construir la imagen de Docker
+  # Paso 0: Construir la imagen de Docker
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -8,17 +8,15 @@ steps:
       - 'gcr.io/$PROJECT_ID/image_juan'
       - '.'
 
-  # Paso 2: Etiquetar la imagen
+  # Paso 1: Etiquetar la imagen
   - name: 'gcr.io/cloud-builders/docker'
     args: ['tag', 'gcr.io/$PROJECT_ID/image_juan', 'gcr.io/$PROJECT_ID/image_juan']
 
-  # Paso 3: Subir la imagen a Google Container Registry
+  # Paso 2: Subir la imagen a Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/image_juan']
 
-  # Paso 4: Desplegar en Cloud Run
-  # Paso para imprimir el usuario que está desplegando
- # Paso para imprimir el usuario que está desplegando
+  # Paso 3: Desplegar en Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -30,7 +28,7 @@ steps:
         # Imprimir el usuario actual
         echo "Usuario desplegando: $current_user"
 
-  # Paso 5: Desplegar en Cloud Run
+  # Paso 4: Desplegar en Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
