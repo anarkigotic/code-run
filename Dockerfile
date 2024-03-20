@@ -17,5 +17,5 @@ EXPOSE 8080
 # Define la variable de entorno PORT
 ENV PORT 8080
 
-# Ejecuta la aplicación Flask cuando el contenedor se inici
+# Ejecuta la aplicación Flask cuando el contenedor se inicio
 CMD ["python", "app.py"]
