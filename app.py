@@ -17,6 +17,16 @@ def obtener_usuarios():
     ]
     return jsonify(usuarios_falsos)
 
+@app.route('/ciudades')
+def obtener_usuarios():
+    # Lista de usuarios falsos
+    usuarios_falsos = [
+        {"id": 1, "nombre": "Juan", "edad": 25},
+        {"id": 2, "nombre": "María", "edad": 30},
+        {"id": 3, "nombre": "Pedro", "edad": 28}
+    ]
+    return jsonify(usuarios_falsos)
+
 
 @app.route('/')
 def hello():
