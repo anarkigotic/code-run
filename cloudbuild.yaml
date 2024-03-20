@@ -1,0 +1,27 @@
+steps:
+  # Paso 1: Construir la imagen de Docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--platform=linux/amd64'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/image_juan'
+      - '.'
+
+  # Paso 2: Etiquetar la imagen
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'gcr.io/$PROJECT_ID/image_juan', 'gcr.io/$PROJECT_ID/image_juan']
+
+  # Paso 3: Subir la imagen a Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/image_juan']
+
+  # Paso 4: Desplegar en Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'image_juan'
+      - '--image=gcr.io/$PROJECT_ID/image_juan'
+      - '--platform=managed'
+      - '--region=us-central1'
