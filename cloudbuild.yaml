@@ -23,7 +23,7 @@ steps:
     args:
       - '-c'
       - |
-        echo "Usuario desplegando: ${BUILDER_OUTPUT}"
+        echo "Usuario desplegando: $BUILDER_OUTPUT"
   # Paso 5: Desplegar en Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
