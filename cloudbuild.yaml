@@ -21,7 +21,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'image_juan'
+      - 'app-flask'
       - '--image=gcr.io/$PROJECT_ID/image_juan'
       - '--platform=managed'
       - '--region=us-central1'
