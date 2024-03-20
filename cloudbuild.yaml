@@ -18,12 +18,18 @@ steps:
 
   # Paso 4: Desplegar en Cloud Run
   # Paso para imprimir el usuario que está desplegando
+ # Paso para imprimir el usuario que está desplegando
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        echo "Usuario desplegando: $BUILDER_OUTPUT"
+        # Obtener el usuario actual
+        current_user=$(gcloud config get-value account)
+
+        # Imprimir el usuario actual
+        echo "Usuario desplegando: $current_user"
+
   # Paso 5: Desplegar en Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
