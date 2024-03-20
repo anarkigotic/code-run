@@ -7,7 +7,7 @@ docker push gcr.io/test-docker-416523/image_juan
 gcloud run deploy --image gcr.io/test-docker-416523/image_juan --platform managed --region us-central1
 
  
- # asociar mi repositorio a code build juan
+ # asociar mi repositorio a code build 
  gcloud builds triggers create github \
 --repo-name=code-run \
 --repo-owner=anarkigotic \
